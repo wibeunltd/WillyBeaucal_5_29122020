@@ -1,22 +1,29 @@
+/* 
+Récupération avec la méthode Fetch
+Création d'une constante nommée qui contiendra l'url api
+Fonction asynchrone car on doit attendre la récupération des données via l'api
+*/
+const apiUrl = "http://localhost:3000/api/teddies";
 
+const getTeddies = async function () {
+  try {
+    let response = await fetch(apiUrl);
+    if (response.ok) {
+      let products = await response.json();
+      console.log(products);
+      products.forEach((product) => {
+        console.log(product);
+      });
+    } else {
+      console.error(
+        "Une erreur " + response.status + " a été retournée par le serveur."
+      );
+    }
+  } catch (e) {
+    console.log(e);
+  }
 
-fetch('http://localhost:3000/api/cameras' , {
-    method: 'GET',
-}).then( data => {
-    return data.json()
-}).then(products => {
-    console.log(products)
+  //Test ajout d'informations
+};
 
-    let myHTML = "" ;
-    products.forEach( product => {
-        console.log(product.name)
-        console.log(product.price)
-        myHTML += `<h2>${product.name}</h2><p>${product.price}</p>`;
-    })
-
-    console.log(myHTML);
-
-    let elt = document.getElementById('test');
-    elt.innerHTML = myHTML;
-
-})
+getTeddies();
