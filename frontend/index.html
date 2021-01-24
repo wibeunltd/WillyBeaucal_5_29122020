@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
@@ -14,50 +18,43 @@
   </head>
   <body>
     <!--Header : Navbar-->
-    <div class="bg-dark">
-      <div class="container">
-        <div class="row">
-          <nav class="col navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="index.html">
-              <img
-                src="img/logo.png"
-                width="50"
-                height="50"
-                alt="Orinoco Logo"
-              />
-              Orinoco
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarContent" class="collapse navbar-collapse">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="">Panier</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html"> <img
+        src="img/logo.png"
+        width="50"
+        height="50"
+        alt="Orinoco Logo"
+      />Orinoco</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Nouveautés<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" title="Votre liste de souhaits">Ma wishlist <i class="far fa-heart"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Panier <i class="fas fa-shopping-cart"></i>
+            <span class="badge badge-info">0</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
+        </form>
       </div>
+    </nav>
       <!-- Alerte question -->
       <div class="alert alert-success text-center rounded-0" role="alert">
         Une Question ? Un Conseil ? Appelez-nous au 09.10.10.60.60 ! Livraison
-        OFFERTE* | Paiement 100% sécurisé | Retour et
-        échanges OFFERTS.
+        OFFERTE* | Paiement 100% sécurisé | Retour et échanges OFFERTS.
       </div>
     </div>
     <!-- Contenu -->
     <div class="container">
-      
       <div class="row my-3">
         <div class="col">
           <h1>Ours en peluche faits à la main</h1>
