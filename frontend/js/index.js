@@ -1,7 +1,7 @@
 //Constante nommée apiURL, contient l'url de l'api
 const apiUrl = "http://localhost:3000/api/teddies";
 
-//Fonction asynchrone getProduct via la méthode fetch, afin de récuperer les produits
+//Fonction asynchrone getProduct via la méthode fetch, afin de récupérer les produits
 const getProduct = async function () {
   try {
     let response = await fetch(apiUrl);
@@ -9,8 +9,6 @@ const getProduct = async function () {
 
 // Réponse positive, récupération des produits
       let products = await response.json();
-
-//Vérification via console.log de la bonne récupération des produits
       //console.log(products);
 
 //Création des cards produits     
@@ -40,7 +38,7 @@ const getProduct = async function () {
       let elt = document.getElementById("products");
       elt.innerHTML = productsCards;
 
-//Les ours n'aiment pas le vide - Création d'une carte bientôt disponible et insertion avec la méthode inner.HTML et appenChild
+//Les ours n'aiment pas le vide - Création d'une carte bientôt disponible et insertion avec la méthode inner.HTML et appendChild
       let availableSoon = document.createElement('div');
       availableSoon.classList.add('col-12', 'col-lg-4');
       availableSoon.innerHTML =
@@ -50,7 +48,7 @@ const getProduct = async function () {
       <p class="card-text btn btn-warning">Bientôt disponible</p>
       </div>
       <div class="card-body">
-      <a href="" class="card-link stretched-link">À découvrir à partir du 14 février</a>
+      <a href="" class="card-link stretched-link">M'avertir de la disponibilité</a>
       </div>
       </div>`;
       elt.appendChild(availableSoon)
