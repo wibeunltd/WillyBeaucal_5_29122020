@@ -1,32 +1,61 @@
-const apiUrl = "http://localhost:3000/api/teddies"; //Constante nommée apiURL, contient l'url de l'api
+//Constante nommée apiURL, contient l'url de l'api
+const apiUrl = "http://localhost:3000/api/teddies";
 
-const getProduct = async function () { //Fonction asynchrone getProduct via la méthode fetch, récupère les produits
+//Fonction asynchrone getProduct via la méthode fetch, afin de récuperer les produits
+const getProduct = async function () {
   try {
     let response = await fetch(apiUrl);
-    if (response.ok) { // Réponse positive, récupération des produits
-      let products = await response.json();
-      console.log(products);
-      let teddiesCards = ""; // Création des cards html
-      products.forEach((product) => {
-        console.log(product);
-        teddiesCards +=
-          `<div class="col-12 col-lg-4">
-        <div class="card mb-4 mb-lg-4 border-light shadow">
-          <img src="${product.imageUrl}" alt="Ours en peluche ${product.name}"/>
-          <div class="card-body">
-            <h2 class="card-title">${product.name}</h2>
-            <p class="card-text">${product.price} €</p>
-            <a href="produit.html?id=${product._id}" class="btn btn-info stretched-link"
-              >Découvrir ${product.name}</a
-            >
-          </div>
-        </div>
-      </div>`;
-      });
-      console.log(teddiesCards);
-      let elt = document.getElementById('teddies');
-      elt.innerHTML = teddiesCards;
+    if (response.ok) {
 
+// Réponse positive, récupération des produits
+      let products = await response.json();
+
+//Vérification via console.log de la bonne récupération des produits
+      //console.log(products);
+
+//Création des cards produits     
+      let productsCards = "";
+      products.forEach((product) => {
+       //console.log(product);
+
+//Formatage monétaire du prix des produits
+        let price = Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", minimumFractionDigits: 2}).format(product.price / 100);
+
+// Création du code HTML
+        productsCards +=
+        `<div class="col-12 col-lg-4">
+        <div class="card mb-4 mb-lg-4 border-light shadow">
+        <img src="${product.imageUrl}" alt="Ours en peluche ${product.name}" />
+        <div class="card-img-overlay text-right">
+        <p class="card-text btn btn-info">${price}</p>
+        </div>
+        <div class="card-body">
+        <a href="produit.html?id=${product._id}" class="card-link stretched-link">Découvrez ${product.name}</a>
+        </div>
+        </div>
+        </div>`;
+      });
+
+//Insertion du code HTML avec la méthode inner.HTML
+      let elt = document.getElementById("products");
+      elt.innerHTML = productsCards;
+
+//Les ours n'aiment pas le vide - Création d'une carte bientôt disponible et insertion avec la méthode inner.HTML et appenChild
+      let availableSoon = document.createElement('div');
+      availableSoon.classList.add('col-12', 'col-lg-4');
+      availableSoon.innerHTML =
+      `<div class="card mb-4 mb-lg-4 border-light shadow">
+      <img src="/backend/images/teddy_0.jpg" alt="Ours en peluche bientôt disponible" />
+      <div class="card-img-overlay text-right">
+      <p class="card-text btn btn-warning">Bientôt disponible</p>
+      </div>
+      <div class="card-body">
+      <a href="" class="card-link stretched-link">À découvrir à partir du 14 février</a>
+      </div>
+      </div>`;
+      elt.appendChild(availableSoon)
+      
+// En cas de réponse négative, affichage de la réponse serveur
     } else {
       console.error(
         "Une erreur " + response.status + " a été retournée par le serveur."
