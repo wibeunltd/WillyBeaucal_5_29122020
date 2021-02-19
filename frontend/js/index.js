@@ -9,15 +9,15 @@ const getProduct = async function () {
 
 // Réponse positive, récupération des produits
       let products = await response.json();
-      //console.log(products);
+      //console.log('Liste des produits :', products);
 
 //Création des cards produits     
       let productsCards = "";
       products.forEach((product) => {
-       //console.log(product);
+      //console.table('Produit :', { product });
 
-//Formatage monétaire du prix des produits
-        let price = Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", minimumFractionDigits: 2}).format(product.price / 100);
+//Utilisation de la fonction formatPrice (functions.js) pour formatage monétaire du prix 
+      let price = formatPrice(product.price);
 
 // Création du code HTML
         productsCards +=
