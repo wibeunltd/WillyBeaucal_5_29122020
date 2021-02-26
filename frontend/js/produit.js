@@ -101,7 +101,7 @@ const getProduct = async function () {
           alertStatus('colorEmpty');
         } else {
           // Produit déjà dans le panier, on augmente la quantité
-          if (localStorage.getItem('shoppingCart')) {
+          if (shoppingCart && shoppingCart.length >= 1) {
             shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
             shoppingCart.forEach(item => {
               if (item.id === productItem.id && item.color === selectedColor) {
@@ -122,7 +122,7 @@ const getProduct = async function () {
         };
           // Actualisation de l'affichage du nombre de produits dans le panier
           cartTotalItems();
-  })
+  });
 
 // En cas de réponse négative, affichage de la réponse serveur
     } else {

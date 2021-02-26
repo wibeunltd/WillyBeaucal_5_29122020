@@ -28,19 +28,69 @@
 // Récupération du panier
     shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
 
-// Création du contenu du panier
+// Création du contenu du panier et définition des variables pour les prix
     let itemsCart = "";
     let cartTotalPrice = 0;
     let itemCartTotalPrice = 0;
-
-    if (shoppingCart.length >= 1) {
+    let deliveryCosts = 0;
+    let priceToPay = 0;
+    let discountCodePrice = 0;
+    let validDiscountCodePrice = 0.1;
+    const priceForFreeDelivery = 69;
+    const taxeDeliveryCosts = 6;
+    const freeDeliveryCosts = 0;
+    const discountCode = "ORI10";
+      
+    if (shoppingCart && shoppingCart.length >= 1) {
     shoppingCart.forEach(itemCart =>{
 
-    // Prix total par produit
+    // Calcul des prix panier
+
+      // Prix d'un produit selon sa quantité
       itemCartTotalPrice = itemCart.quantity * parseFloat(itemCart.price);
-      let itemCartTotalPriceFormat = formatPrice(itemCartTotalPrice * 100);  
+      let itemCartTotalPriceFormat = formatPrice(itemCartTotalPrice * 100);
+
+      // Prix total des produits
       cartTotalPrice += itemCartTotalPrice;
-      console.log(cartTotalPrice);
+
+      //Prix des frais de livraison
+      if (cartTotalPrice < priceForFreeDelivery) {
+        deliveryCosts = taxeDeliveryCosts;
+      } else if (cartTotalPrice >= priceForFreeDelivery) {
+        deliveryCosts = freeDeliveryCosts;
+      };
+
+      // Gestion du code de réduction
+      let eltDiscountCode = document.querySelector('.help-discount-code');
+      let reduceCode = document.querySelector('.discount-code');
+      reduceCode.innerText = formatPrice(discountCodePrice);
+
+      eltDiscountCode.addEventListener('click', function () {
+        let eltInputCode = document.getElementById('discountCode').value;
+        if (eltInputCode !== discountCode) {
+          eltDiscountCode.classList.remove('btn-info');
+          eltDiscountCode.classList.add('btn-danger');
+          eltDiscountCode.innerText = "Le code saisi n'est pas valide";
+          setTimeout(function() {
+            eltDiscountCode.classList.remove('btn-danger');
+            eltDiscountCode.classList.add('btn-info');
+            eltDiscountCode.innerText = 'Appliquer la réduction';
+          }, 2000);
+            discountCodePrice = discountCodePrice;
+        } else if (eltInputCode == discountCode) {
+          eltDiscountCode.classList.remove('btn-info');
+          eltDiscountCode.classList.add('btn-success');
+          eltDiscountCode.innerText = "La réduction a été appliquée";
+          discountCodePrice = validDiscountCodePrice;
+        };
+
+        reduceCode.innerText = "- " + formatPrice(((cartTotalPrice + deliveryCosts) * discountCodePrice) * 100);
+        priceToPay = (cartTotalPrice + deliveryCosts) - ((cartTotalPrice + deliveryCosts) * discountCodePrice);
+        finalPrice.innerText = formatPrice(priceToPay * 100);
+      });
+
+      // Montant total du panier
+      priceToPay = (cartTotalPrice + deliveryCosts) - ((cartTotalPrice + deliveryCosts) * discountCodePrice);  
     
     // Création du code HTML
     itemsCart +=
@@ -69,13 +119,27 @@
       </div>`;
       //console.log(itemsCart);
       //console.log(typeof itemsCart);
+
 });
-    }
+    };
 
 //Insertion du code HTML
+    //Insertion des produits sélectionnés
     let elt = document.querySelector('.card-header');
     elt.insertAdjacentHTML('afterend', itemsCart);
     let eltInfo = document.querySelector('.infoCart');
+
+    //Insertion partie montant
+    let totalCart = document.querySelector('.total-cart');
+    totalCart.innerText = formatPrice(cartTotalPrice * 100);
+
+    let deliveryPrice = document.querySelector('.delivery-price');
+    deliveryPrice.innerText = formatPrice(deliveryCosts * 100);
+
+    let finalPrice = document.querySelector('.final-price');
+    finalPrice.innerText = formatPrice(priceToPay * 100);
+
+
     
 
 /* // Regex
