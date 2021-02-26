@@ -1,7 +1,7 @@
-//Constante nommée apiURL, contient l'url de l'api
+// Constante nommée apiURL, contient l'url de l'api
 const apiUrl = "http://localhost:3000/api/teddies";
 
-//Fonction asynchrone getProduct via la méthode fetch, afin de récupérer les produits
+// Fonction asynchrone getProduct via la méthode fetch, afin de récupérer les produits
 const getProduct = async function () {
   try {
     let response = await fetch(apiUrl);
@@ -9,14 +9,14 @@ const getProduct = async function () {
 
 // Réponse positive, récupération des produits
       let products = await response.json();
-      //console.log('Liste des produits :', products);
+      // console.log('Liste des produits :', products);
 
-//Création des cards produits     
+// Création des cards produits     
       let productsCards = "";
       products.forEach((product) => {
-      //console.table('Produit :', { product });
+      // console.table('Produit :', { product });
 
-//Utilisation de la fonction formatPrice (functions.js) pour formatage monétaire du prix 
+// Utilisation de la fonction formatPrice (functions.js) pour formatage monétaire du prix 
       let price = formatPrice(product.price);
 
 // Création du code HTML
@@ -34,11 +34,11 @@ const getProduct = async function () {
         </div>`;
       });
 
-//Insertion du code HTML avec la méthode inner.HTML
+// Insertion du code HTML avec la méthode inner.HTML
       let elt = document.getElementById("products");
       elt.innerHTML = productsCards;
 
-//Les ours n'aiment pas le vide - Création d'une carte bientôt disponible et insertion avec la méthode inner.HTML et appendChild
+// Les ours n'aiment pas le vide - Création d'une carte bientôt disponible et insertion avec la méthode inner.HTML et appendChild
       let availableSoon = document.createElement('div');
       availableSoon.classList.add('col-12', 'col-lg-4');
       availableSoon.innerHTML =
@@ -51,7 +51,7 @@ const getProduct = async function () {
       <a href="" class="card-link stretched-link">M'avertir de la disponibilité</a>
       </div>
       </div>`;
-      elt.appendChild(availableSoon)
+      elt.appendChild(availableSoon);
       
 // En cas de réponse négative, affichage de la réponse serveur
     } else {
@@ -65,3 +65,4 @@ const getProduct = async function () {
 };
 
 getProduct();
+cartTotalItems();

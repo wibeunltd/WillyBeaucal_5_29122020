@@ -10,21 +10,21 @@
   <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
   <title>Panier - Orinoco</title>
   <!-- Scripts -->
-  <script defer src="/frontend/js/panier.js"></script>
-  <script defer src="/frontend/js/functions.js"></script>
-  <script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  <script src="/frontend/js/functions.js" defer></script>
+  <script src="/frontend/js/panier.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous" defer></script>
 </head>
 
 <body>
   <!--Header : Navbar-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.html">
-      <img src="img/logo.png" width="50" height="50" alt="Orinoco Logo" />Orinoco</a>
+      <img src="img/logo.png" width="50" height="50" alt="Logo de l'entreprise Orinoco" />Orinoco</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,16 +33,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
+          <a class="nav-link" href="index.html">Accueil</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#" title="Votre liste de souhaits">Mon compte<i
               class="fas fa-user-circle ml-1"></i></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="panier.html">Panier<i class="fas fa-shopping-cart ml-1"></i>
-            <span class="badge badge-info ml-1">0</span></a>
+            <span class="badge badge-info ml-1 total-items"></span></a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" />
+        <button class="btn btn-outline-info" type="submit">Allons-y</button>
       </form>
     </div>
   </nav>
@@ -53,10 +57,152 @@
   </div>
   <!-- Contenu -->
   <main class="container">
-    <section class="jumbotron bg-white">
-    </section>
+    <div class="jumbotron bg-white mb-0">
+    </div>
     <!-- Produits -->
-    <div id="" class="row"></div>
+    <section class="full-cart">
+      <div class="row mb-4">
+        <div class="col-lg-8">
+          <div class="card mb-3 shadow rounded p-3">
+            <div class="card-header bg-white d-flex justify-content-between pl-0 pr-0">
+              <h2>Contenu du panier</h2>
+              <button type="button" class="btn btn-danger rounded" title="Vider le panier"><i class="fas fa-trash-alt mr-3"></i>Vider le panier</button>
+            </div>
+            <!--cards of cart-->
+            
+            <!--cards of cart-->
+            <div class="card-footer bg-white">
+              <p class="text-primary mb-0 infoCart"><i class="fas fa-info-circle mr-1"></i> Les articles de votre panier seront réservés pendant 30 minutes.</p>
+            </div>
+          </div>
+        </div>
+        <!--right-side-->
+        <div class="col-lg-4">
+          <div class="card shadow p-3">
+            <div class="">
+              <h4>Montant total du panier</h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                  Total panier
+                  <span>92.99 €</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  Frais de livraison
+                  <span>6.00 €</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light text-success">
+                  Code de réduction
+                  <span>- 9.90 €</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 font-weight-bold">
+                  Montant total
+                  <span>89.09 €</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--promo code-->
+          <div class="card shadow mt-2 p-3">
+            <div class="">
+    
+              <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                Vous avez un code de réduction ?
+                <span><i class="fas fa-chevron-down pt-1"></i></span>
+              </a>
+    
+              <div class="collapse" id="collapseExample">
+                <div class="mt-3">
+                  <div class="md-form md-outline mb-0">
+                    <input type="text" id="discount-code" class="form-control font-weight-light"
+                      placeholder="Entrer votre code de réduction">
+                      <p class="small discount-code mt-2 ml-1 mb-0 text-secondary">Profitez de -10%, avec le code ORI10</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--paiement-->
+          <div class="card shadow rounded mt-2 p-3">
+            <div class="">
+    
+              <h5 class="mb-4">Moyens de paiement acceptés</h5>
+              <img class="mr-2" width="45"
+                src="img/paiement/cb.svg"
+                alt="cb">
+              <img class="mr-2" width="50"
+                src="img/paiement/visa.svg"
+                alt="Visa">
+              <img class="mr-2" width="50"
+                src="img/paiement/amex.svg"
+                alt="American Express">
+              <img class="mr-2" width="50"
+                src="img/paiement/mastercard.svg"
+                alt="Mastercard">
+              <img class="mr-2" width="50"
+                src="img/paiement/paypal.svg"
+                alt="PayPal">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--info livraison-->
+      <div class="card bg-dark p-3 mb-4">
+        <h3 class="font-weight-bold text-white"><i class="fas fa-crown mr-3"></i>Livraison Orinoco Premium France</h3>
+        <p class="text-white">Bénéficiez de la livraison 24h à domicile ou en point relais illimitée pendant un an pour seulement 20,00 €.</p>
+        <a href="#" class="stretched-link" title="En savoir plus sur la livraison 24h en illimitée"></a>
+      </div>
+      <!--formulaire-->
+      <div class="card shadow p-3">
+        <div class="card-header bg-white">
+          <h2>Coordonnées de livraison</h2>
+        </div>
+        <div class="card-body">
+          <form class="row g-3">
+            <div class="col-md-6 mb-4">
+              <label for="inputlastname" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="inputlastname" placeholder="Nom de famille">
+            </div>
+            <div class="col-md-6 mb-4">
+              <label for="inputfirstname" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="inputfirstname" placeholder="Prénom">
+            </div>
+            <div class="col-12 mb-4">
+              <label for="inputAddress" class="form-label">Addresse</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1 rue de l'Ilet-Pérou">
+            </div>
+            <div class="col-md-4 mb-4">
+              <label for="inputZip" class="form-label">Code postal</label>
+              <input type="text" class="form-control" id="inputZip" placeholder="97130">
+            </div>
+            <div class="col-md-8 mb-4">
+              <label for="inputCity" class="form-label">Ville</label>
+              <input type="text" class="form-control" id="inputCity" placeholder="Capesterre-Belle-Eau">
+            </div>
+            <div class="col-md-6 mb-4">
+              <label for="inputCity" class="form-label">Email</label>
+              <input type="text" class="form-control" id="inputMail" placeholder="hello@orinoco.fr">
+            </div>
+            <div class="col-md-6 mb-4">
+              <label for="inputCity" class="form-label">Téléphone</label>
+              <input type="text" class="form-control" id="inputPhone" placeholder="09.10.10.60.60">
+            </div>
+            <div class="col-12 mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  J'accepte les conditions générales d'utilisation et de vente
+                </label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Valider le panier</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    
   </main>
   <!-- Footer -->
   <footer class="bg-light mt-4">
