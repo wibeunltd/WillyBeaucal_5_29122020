@@ -1,7 +1,7 @@
 //Formatage monétaire du prix des produits
 function formatPrice(productPrice) {
     return Intl.NumberFormat("fr-FR", {style: "currency", currency: "EUR", minimumFractionDigits: 2,}).format(productPrice / 100);
-}
+};
 
 //Fonction Alert
 function alertFade() {
@@ -9,7 +9,7 @@ function alertFade() {
       setTimeout(function() {
         document.querySelector('.alert-status').setAttribute('hidden', 'hidden')
       }, 5000)
-}
+};
 
 function alertStatus(alertType) {
     if (alertType === 'colorEmpty'){

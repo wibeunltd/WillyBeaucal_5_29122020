@@ -66,13 +66,13 @@
           <div class="card mb-3 shadow rounded p-3">
             <div class="card-header bg-white d-flex justify-content-between pl-0 pr-0">
               <h2>Contenu du panier</h2>
-              <button type="button" class="btn btn-danger rounded" title="Vider le panier"><i class="fas fa-trash-alt mr-3"></i>Vider le panier</button>
+              <button type="button" class="btn btn-danger rounded delete-cart" title="Vider le panier"><i class="fas fa-trash-alt mr-3"></i>Vider le panier</button>
             </div>
             <!--cards of cart-->
             
             <!--cards of cart-->
             <div class="card-footer bg-white">
-              <p class="text-primary mb-0 infoCart"><i class="fas fa-info-circle mr-1"></i> Les articles de votre panier seront réservés pendant 30 minutes.</p>
+              <p class="text-info mb-0"><i class="fas fa-info-circle mr-1"></i> Les articles de votre panier seront réservés pendant 30 minutes.</p>
             </div>
           </div>
         </div>
@@ -159,34 +159,42 @@
           <h2>Coordonnées de livraison</h2>
         </div>
         <div class="card-body">
+          <p class="text-right small text-danger">Tous les champs sont obligatoires.</p>
           <form class="row g-3">
             <div class="col-md-6 mb-4">
-              <label for="inputlastname" class="form-label">Nom</label>
-              <input type="text" class="form-control" id="inputlastname" placeholder="Nom de famille">
+              <label for="lastname" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="lastname" placeholder="Teddy">
+              <p class="mb-0 ml-1 text-danger" hidden>Merci de verifier votre saisie.</p>
             </div>
             <div class="col-md-6 mb-4">
-              <label for="inputfirstname" class="form-label">Prénom</label>
-              <input type="text" class="form-control" id="inputfirstname" placeholder="Prénom">
+              <label for="firstname" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="firstname" placeholder="Gustav">
+              <p class="mb-0 ml-1 text-danger" hidden>Merci de verifier votre saisie.</p>
             </div>
             <div class="col-12 mb-4">
-              <label for="inputAddress" class="form-label">Addresse</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1 rue de l'Ilet-Pérou">
+              <label for="address" class="form-label">Addresse</label>
+              <input type="text" class="form-control" id="address" placeholder="1 rue de l'Ilet-Pérou">
+              <p class="mb-0 ml-1 text-danger" hidden>Merci de verifier votre saisie.</p>
             </div>
             <div class="col-md-4 mb-4">
-              <label for="inputZip" class="form-label">Code postal</label>
-              <input type="text" class="form-control" id="inputZip" placeholder="97130">
+              <label for="zip" class="form-label">Code postal</label>
+              <input type="text" class="form-control" id="zip" placeholder="97130">
+              <p class="mb-0 ml-1 text-danger" hidden>Merci de verifier votre saisie.</p>
             </div>
             <div class="col-md-8 mb-4">
-              <label for="inputCity" class="form-label">Ville</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Capesterre-Belle-Eau">
+              <label for="city" class="form-label">Ville</label>
+              <input type="text" class="form-control" id="city" placeholder="Capesterre-Belle-Eau">
+              <p class="mb-0 ml-1 text-danger" hidden>Merci de verifier votre saisie.</p>
             </div>
             <div class="col-md-6 mb-4">
-              <label for="inputCity" class="form-label">Email</label>
-              <input type="text" class="form-control" id="inputMail" placeholder="hello@orinoco.fr">
+              <label for="mail" class="form-label">Email</label>
+              <input type="text" class="form-control" id="mail" placeholder="hello@orinoco.fr">
+              <p class="mb-0 ml-1 text-danger" hidden>Merci de verifier votre saisie.</p>
             </div>
             <div class="col-md-6 mb-4">
-              <label for="inputCity" class="form-label">Téléphone</label>
-              <input type="text" class="form-control" id="inputPhone" placeholder="09.10.10.60.60">
+              <label for="phone" class="form-label">Téléphone</label>
+              <input type="text" class="form-control" id="phone" placeholder="05.90.50.40.30">
+              <p class="mb-0 ml-1 text-danger" hidden>Merci de verifier votre saisie.</p>
             </div>
             <div class="col-12 mb-4">
               <div class="form-check">
@@ -194,10 +202,11 @@
                 <label class="form-check-label" for="gridCheck">
                   J'accepte les conditions générales d'utilisation et de vente
                 </label>
+                <p class="mb-0 text-danger check-form-status" hidden>Merci d'accepter les conditions générales d'utilisation et de vente.</p>
               </div>
             </div>
             <div class="col-12">
-              <button type="submit" class="btn btn-primary">Valider le panier</button>
+              <button type="button" class="btn btn-primary form-validation"><span></span>Valider le panier</button>
             </div>
           </form>
         </div>
