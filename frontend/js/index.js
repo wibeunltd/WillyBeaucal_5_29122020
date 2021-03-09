@@ -60,7 +60,7 @@ const getProduct = async function () {
       );
     }
   } catch (e) {
-    console.log(e);
+    console.log("Message d'erreur : ", e);
   }
 };
 

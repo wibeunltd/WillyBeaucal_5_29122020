@@ -138,10 +138,6 @@
     let deliveryPrice = document.querySelector('.delivery-price');
     deliveryPrice.innerText = formatPrice(deliveryCosts * 100);
 
-
-
-
-
 //Vider le panier
     let deleteCartButton = document.querySelector('.delete-cart');
     deleteCartButton.addEventListener('click', () =>{
@@ -173,6 +169,7 @@
     // Fonction de validation des inputs
     function validInputForm (elt, regEx) {
       if (regEx.test(elt.value) === true) {
+          elt.nextElementSibling.setAttribute('hidden', 'hidden');
           elt.classList.remove('is-invalid');
           elt.classList.add('is-valid');
           return true;
@@ -199,18 +196,29 @@ formValidButton.addEventListener('click', function formValidation() {
 
   if (!resTermsOfUse) {
     checkTermsOfUse.removeAttribute('hidden');
+  } else {
+    checkTermsOfUse.setAttribute('hidden', 'hidden');
   };
-  
-  console.log('nom', resLastName, 'prénom', resFirstName, 'addresse', resAddress, 'zip', resZip, 'city', resCity, 'mail', resMail, 'phone', resPhone);
   
   if (resLastName && resFirstName && resAddress && resZip && resCity && resMail && resPhone && resTermsOfUse) {
-    console.log('création produits et contact');;
     let contact = {
-      
+      firstName: firstName.value,
+      lastName: lastName.value,
+      address: address.value,
+      city: city.value,
+      email: mail.value,
     };
+    console.log('contact', contact);
 
-    let product = {};
+    let products = [];
+    shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+    shoppingCart.forEach(product => {
+      products.push(product.id);
+    });
+    console.log(products);
   };
+
+  //let responseCart = await fetch ()
 });   
 
 cartTotalItems ();
