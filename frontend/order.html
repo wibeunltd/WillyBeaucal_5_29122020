@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  <title>Confirmation de commande - Orinoco</title>
+  <!-- Scripts -->
+  <script src="/frontend/js/order.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+  <!--Header : Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png" width="50" height="50" alt="Orinoco Logo" />Orinoco</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navigation -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="Votre liste de souhaits">Mon compte<i
+              class="fas fa-user-circle ml-1"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="panier.html">Panier<i class="fas fa-shopping-cart ml-1"></i>
+            <span class="badge badge-info ml-1 total-items"></span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" />
+        <button class="btn btn-outline-info" type="submit">Allons-y</button>
+      </form>
+    </div>
+  </nav>
+  <!-- Alerte question -->
+  <div class="alert alert-success text-center rounded-0" role="alert">
+    Une Question ? Un Conseil ? Appelez-nous au 09.10.10.60.60 ! Livraison
+    OFFERTE* | Paiement 100% sécurisé | Retour et échanges OFFERTS.
+  </div>
+  <!-- Contenu -->
+  <main class="container">
+    <section class="jumbotron bg-white mb-0 pl-0 pr-0">
+      <h1 class="display-4 font-weight-bold">
+        Confirmation de commande
+      </h1>
+      <div class="row g-0 position-relative">
+          <div class="col-lg-5 mb-md-0 p-md-4">
+            <p class="lead">Merci Willy Beaucal,</p>
+            <p class="lead">Votre commande <span class="text-info">be208cd0-799e-11eb-a6f2-63a0bf29c3c2</span> d'un montant de <span class="text-info">140.00 €,</span> le samedi 27 février 2021 à 11h41 est en préparation.</p>
+            <p class="lead">Vous serez informé via votre adresse mail <span class="text-info">hello@orinoco.fr</span> et par sms au <span class="text-info">05.90.86.50.30</span> dès que votre commande quittera nos locaux.</p>
+            <p class="lead"> Vous recevrez dans les minutes qui suivent, un mail contenant le détail de votre commande, ainsi qu'une facture.</p>
+            <p class="lead"> Vous pouvez aussi suivre votre commande en vous connectant à votre espace personnel.</p>
+          </div>
+          <div class="col-md-7 p-4 ps-md-0">
+            <img src="img/delivery.gif" class="img-fluid" alt="">
+          </div>
+      </div>
+    </section>
+    <!-- Produits -->
+    <h2><u>Vos informations</u></h2>
+    <div class="row">
+        <div class="col-lg-6 mb-md-0 p-md-4">
+            <h3>Adresse de livraison</h3>
+            <address class="mb-1">1 rue d'Ilet-Pérou</address>
+            <address>97130 Capesterre-Belle-Eau</address>
+        </div>
+        <div class="col-md-6 p-4 ps-md-0">
+            <h3>Information de contact</h3>
+            <p class="mb-1">Beaucal Willy</p>
+            <p class="d-inline mr-4"><i class="fas fa-mobile mr-2"></i>05.90.86.50.30</p>
+            <p class="d-inline"><i class="fas fa-envelope-open-text mr-2"></i>hello@orinoco.fr</p>
+        </div>
+    </div>
+    
+
+  </main>
+  <!-- Footer -->
+  <footer class="bg-light mt-4">
+    <div class="container">
+      <div class="row pt-4 pb-3">
+        <div class="col">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item"><a href="#">Notre histoire</a></li>
+            <li class="list-inline-item">&middot;</li>
+            <li class="list-inline-item"><a href="#">Nos Services</a></li>
+            <li class="list-inline-item">&middot;</li>
+            <li class="list-inline-item">
+              <a href="#">Conditions générales de ventes</a>
+            </li>
+            <li class="list-inline-item">&middot;</li>
+            <li class="list-inline-item"><a href="#">Nous contacter</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
