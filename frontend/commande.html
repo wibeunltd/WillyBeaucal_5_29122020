@@ -10,7 +10,8 @@
   <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
   <title>Confirmation de commande - Orinoco</title>
   <!-- Scripts -->
-  <script src="/frontend/js/order.js" defer></script>
+  <script src="/frontend/js/functions.js" defer></script>
+  <script src="/frontend/js/commande.js" defer></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous" defer></script>
@@ -62,9 +63,9 @@
       </h1>
       <div class="row g-0 position-relative">
           <div class="col-lg-5 mb-md-0 p-md-4">
-            <p class="lead">Merci Willy Beaucal,</p>
-            <p class="lead">Votre commande <span class="text-info">be208cd0-799e-11eb-a6f2-63a0bf29c3c2</span> d'un montant de <span class="text-info">140.00 €,</span> le samedi 27 février 2021 à 11h41 est en préparation.</p>
-            <p class="lead">Vous serez informé via votre adresse mail <span class="text-info">hello@orinoco.fr</span> et par sms au <span class="text-info">05.90.86.50.30</span> dès que votre commande quittera nos locaux.</p>
+            <p class="lead client-firstname"></p>
+            <p class="lead">Votre commande <span class="text-info order-id"></span> d'un montant de <span class="text-info total-order"></span> effectuée le <span class="date-locale"></span> est en préparation.</p>
+            <p class="lead">Vous serez informé via votre adresse mail <span class="text-info client-mail"></span> et par sms au <span class="text-info client-phone"></span> dès que votre commande quittera nos locaux.</p>
             <p class="lead"> Vous recevrez dans les minutes qui suivent, un mail contenant le détail de votre commande, ainsi qu'une facture.</p>
             <p class="lead"> Vous pouvez aussi suivre votre commande en vous connectant à votre espace personnel.</p>
           </div>
@@ -78,14 +79,14 @@
     <div class="row">
         <div class="col-lg-6 mb-md-0 p-md-4">
             <h3>Adresse de livraison</h3>
-            <address class="mb-1">1 rue d'Ilet-Pérou</address>
-            <address>97130 Capesterre-Belle-Eau</address>
+            <address class="mb-1 client-address"></address>
+            <address class="client-city"></address>
         </div>
         <div class="col-md-6 p-4 ps-md-0">
             <h3>Information de contact</h3>
-            <p class="mb-1">Beaucal Willy</p>
-            <p class="d-inline mr-4"><i class="fas fa-mobile mr-2"></i>05.90.86.50.30</p>
-            <p class="d-inline"><i class="fas fa-envelope-open-text mr-2"></i>hello@orinoco.fr</p>
+            <p class="mb-1 client-name"></p>
+            <p class="d-inline mr-4 client-phone"><i class="fas fa-mobile mr-2"></i></p>
+            <p class="d-inline client-mail"><i class="fas fa-envelope-open-text mr-2"></i></p>
         </div>
     </div>
     

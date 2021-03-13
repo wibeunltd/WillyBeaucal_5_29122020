@@ -65,7 +65,7 @@
       let reduceCode = document.querySelector('.discount-code');
       reduceCode.innerText = formatPrice(discountCodePrice);
 
-      eltDiscountCode.addEventListener('click', function () {
+      eltDiscountCode.addEventListener('click', function discount () {
         let eltInputCode = document.getElementById('discountCode').value;
         if (eltInputCode !== discountCode) {
           eltDiscountCode.classList.remove('btn-info');
@@ -109,14 +109,13 @@
       <h3><a class="text-info text-decoration-none" href="produit.html?id=${itemCart.id}">${itemCart.name}</a> <span class="btn btn-light btn-sm">( ${itemCart.quantity} x ${itemCart.price} )</span></h3>
       <div class="d-flex justify-content-between align-items-center">
       <p class="mb-0 text-secondary text-uppercase small d-inline">ID : ${itemCart.id}</p>
-      <p class="mb-0 font-weight-bold">${itemCartTotalPriceFormat}</p>
       </div>
       <div class="d-flex justify-content-between align-items-center">
       <div>
       <p class="mr-3 mb-2 text-uppercase small d-inline">Couleur : ${itemCart.color}</p>
       <p class="mb-2 text-uppercase small d-inline">Quantité : ${itemCart.quantity}</p>
       </div>
-      <button type="button" class="btn btn-sm text-info text-uppercase delete-item pr-0"><i class="fas fa-trash-alt text-info mr-1"></i> Supprimer</button>
+      <p class="mb-0 font-weight-bold">${itemCartTotalPriceFormat}</p>
       </div>
       </div>
       </div>
@@ -181,7 +180,6 @@
       };
     }
 
-//formValidation();
 
 let formValidButton = document.querySelector('.form-validation');
 formValidButton.addEventListener('click', function formValidation() {
@@ -208,7 +206,14 @@ formValidButton.addEventListener('click', function formValidation() {
       city: city.value,
       email: mail.value,
     };
-    console.log('contact', contact);
+
+    let contactMore = {
+      zip: zip.value,
+      phone: phone.value,
+      total: formatPrice(priceToPay * 100),
+    };
+
+    console.log('contact', contact, 'contact+', contactMore);
 
     let products = [];
     shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
@@ -216,9 +221,41 @@ formValidButton.addEventListener('click', function formValidation() {
       products.push(product.id);
     });
     console.log(products);
-  };
 
-  //let responseCart = await fetch ()
+    let confirmedOrder = {
+      contact,
+      products,
+    };
+
+    const getOrder = async function () {
+      try {
+        let resCart = await fetch("http://localhost:3000/api/teddies/order", {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: "POST",
+        body: JSON.stringify(confirmedOrder),
+    });
+    
+    if(resCart.ok) {
+      let order = await resCart.json();
+      console.log(order);
+      localStorage.setItem('order', JSON.stringify(order));
+      localStorage.setItem('additionalInfo', JSON.stringify(contactMore));
+      localStorage.removeItem('shoppingCart');
+      window.location.href = 'commande.html';
+
+    } else {
+      console.error(
+        "Une erreur " + resCart.status + " a été retournée par le serveur."
+      );
+    }
+      } catch (e) {
+        console.log("Message d'erreur : ", e);
+      }
+    };
+    getOrder();
+  };
 });   
 
 cartTotalItems ();

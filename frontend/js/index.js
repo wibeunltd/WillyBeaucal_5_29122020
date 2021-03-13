@@ -2,7 +2,7 @@
 const apiUrl = "http://localhost:3000/api/teddies";
 
 // Fonction asynchrone getProduct via la méthode fetch, afin de récupérer les produits
-const getProduct = async function () {
+const getProducts = async function () {
   try {
     let response = await fetch(apiUrl);
     if (response.ok) {
@@ -64,5 +64,5 @@ const getProduct = async function () {
   }
 };
 
-getProduct();
+getProducts();
 cartTotalItems();

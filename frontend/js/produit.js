@@ -75,7 +75,7 @@ const getProduct = async function () {
 
   // 1-Clic sur le bouton ajouter au panier
         let shoppingCartBtn = document.querySelector('.btn-shopping-cart');
-        shoppingCartBtn.addEventListener('click', function () {
+        shoppingCartBtn.addEventListener('click', function addProductToCart () {
   
   // 2-Récupération de la quantité et de la couleur sélectionnées
         let selectedColor = document.querySelector(".product-color").value;
