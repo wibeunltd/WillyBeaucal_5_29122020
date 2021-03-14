@@ -26,7 +26,7 @@ function alertStatus(alertType) {
 };
 
 // Nombre de produit(s) présent dans le panier
-function cartTotalItems () {
+function cartTotalItems() {
     let totalItems = 0;
     let totalItemsDisplay = document.querySelector('.total-items');
     shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));

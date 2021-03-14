@@ -5,7 +5,7 @@ const apiUrl = "http://localhost:3000/api/teddies/" + idProduct;
 //console.group('URL & ID Produit'); console.log('URL :', urlProduct); console.log('ID :', idProduct); console.log('URL API :', apiUrl); console.groupEnd('URL & ID Produit');
 
 // Fonction asynchrone getProduct via la méthode fetch, récupère le produit
-const getProduct = async function () {
+const getProduct = async function() {
   try {
     let response = await fetch(apiUrl);
     if (response.ok) {
@@ -75,7 +75,7 @@ const getProduct = async function () {
 
   // 1-Clic sur le bouton ajouter au panier
         let shoppingCartBtn = document.querySelector('.btn-shopping-cart');
-        shoppingCartBtn.addEventListener('click', function addProductToCart () {
+        shoppingCartBtn.addEventListener('click', function addProductToCart() {
   
   // 2-Récupération de la quantité et de la couleur sélectionnées
         let selectedColor = document.querySelector(".product-color").value;

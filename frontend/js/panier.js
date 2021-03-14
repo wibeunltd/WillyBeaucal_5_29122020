@@ -49,7 +49,7 @@
       // Prix d'un produit selon sa quantité
       itemCartTotalPrice = itemCart.quantity * parseFloat(itemCart.price);
       let itemCartTotalPriceFormat = formatPrice(itemCartTotalPrice * 100);
-
+    
       // Prix total des produits
       cartTotalPrice += itemCartTotalPrice;
 
@@ -65,18 +65,24 @@
       let reduceCode = document.querySelector('.discount-code');
       reduceCode.innerText = formatPrice(discountCodePrice);
 
-      eltDiscountCode.addEventListener('click', function discount () {
+        // Vérification du code saisi
+      eltDiscountCode.addEventListener('click', function discount() {
         let eltInputCode = document.getElementById('discountCode').value;
+
+        // Code saisi incorrect
         if (eltInputCode !== discountCode) {
           eltDiscountCode.classList.remove('btn-info');
           eltDiscountCode.classList.add('btn-danger');
           eltDiscountCode.innerText = "Le code saisi n'est pas valide";
+          
           setTimeout(function() {
             eltDiscountCode.classList.remove('btn-danger');
             eltDiscountCode.classList.add('btn-info');
             eltDiscountCode.innerText = 'Appliquer la réduction';
           }, 2000);
             discountCodePrice = discountCodePrice;
+
+        // Code saisi correct
         } else if (eltInputCode == discountCode) {
           eltDiscountCode.classList.remove('btn-info');
           eltDiscountCode.classList.add('btn-success');
@@ -84,68 +90,67 @@
           discountCodePrice = validDiscountCodePrice;
         };
 
+        // Affichage du montant de la réduction et re-calcul montant total
         reduceCode.innerText = "- " + formatPrice(((cartTotalPrice + deliveryCosts) * discountCodePrice) * 100);
         toPay();
       });
 
       // Montant total du panier
-      function toPay () {
+      function toPay() {
         let finalPrice = document.querySelector('.final-price');
         priceToPay = (cartTotalPrice + deliveryCosts) - ((cartTotalPrice + deliveryCosts) * discountCodePrice);
         finalPrice.innerText = formatPrice(priceToPay * 100);
       };
       toPay();
     
-    // Création du code HTML
-    itemsCart +=
-      `<div class="row mb-3 mt-3">
-      <div class="col-md-5 col-lg-3 col-xl-3 pr-0">
-      <div class="mb-3 mb-md-0">
-      <a href="produit.html?id=${itemCart.id}"><img class="img-fluid img-thumbnail w-75" src="${itemCart.imageUrl}" alt="Ours en peluche ${itemCart.name}"></a>
-      </div>
-      </div>
-      <div class="col-md-7 col-lg-9 col-xl-9 pl-0">
-      <div>
-      <h3><a class="text-info text-decoration-none" href="produit.html?id=${itemCart.id}">${itemCart.name}</a> <span class="btn btn-light btn-sm">( ${itemCart.quantity} x ${itemCart.price} )</span></h3>
-      <div class="d-flex justify-content-between align-items-center">
-      <p class="mb-0 text-secondary text-uppercase small d-inline">ID : ${itemCart.id}</p>
-      </div>
-      <div class="d-flex justify-content-between align-items-center">
-      <div>
-      <p class="mr-3 mb-2 text-uppercase small d-inline">Couleur : ${itemCart.color}</p>
-      <p class="mb-2 text-uppercase small d-inline">Quantité : ${itemCart.quantity}</p>
-      </div>
-      <p class="mb-0 font-weight-bold">${itemCartTotalPriceFormat}</p>
-      </div>
-      </div>
-      </div>
-      </div>`;
-      
+      // Création du code HTML
+      itemsCart +=
+        `<div class="row mb-3 mt-3">
+        <div class="col-md-5 col-lg-3 col-xl-3 pr-0">
+        <div class="mb-3 mb-md-0">
+        <a href="produit.html?id=${itemCart.id}"><img class="img-fluid img-thumbnail w-75" src="${itemCart.imageUrl}" alt="Ours en peluche ${itemCart.name}"></a>
+        </div>
+        </div>
+        <div class="col-md-7 col-lg-9 col-xl-9 pl-0">
+        <div>
+        <h3><a class="text-info text-decoration-none" href="produit.html?id=${itemCart.id}">${itemCart.name}</a> <span class="btn btn-light btn-sm">( ${itemCart.quantity} x ${itemCart.price} )</span></h3>
+        <div class="d-flex justify-content-between align-items-center">
+        <p class="mb-0 text-secondary text-uppercase small d-inline">ID : ${itemCart.id}</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+        <div>
+        <p class="mr-3 mb-2 text-uppercase small d-inline">Couleur : ${itemCart.color}</p>
+        <p class="mb-2 text-uppercase small d-inline">Quantité : ${itemCart.quantity}</p>
+        </div>
+        <p class="mb-0 font-weight-bold">${itemCartTotalPriceFormat}</p>
+        </div>
+        </div>
+        </div>
+        </div>`;
     });
   };
 
-//Insertion du code HTML
-    //Insertion des produits sélectionnés
+// Insertion du code HTML
+    // Insertion des produits sélectionnés
     let elt = document.querySelector('.card-header');
     elt.insertAdjacentHTML('afterend', itemsCart);
     let eltInfo = document.querySelector('.infoCart');
 
-    //Insertion des montants
+    // Insertion des montants
     let totalCart = document.querySelector('.total-cart');
     totalCart.innerText = formatPrice(cartTotalPrice * 100);
 
     let deliveryPrice = document.querySelector('.delivery-price');
     deliveryPrice.innerText = formatPrice(deliveryCosts * 100);
 
-//Vider le panier
+// Vider le panier
     let deleteCartButton = document.querySelector('.delete-cart');
-    deleteCartButton.addEventListener('click', () =>{
+    deleteCartButton.addEventListener('click', function clearCart() {
       localStorage.clear();
       window.location.reload();
     });
 
-
-//Validation du formulaire
+// Validation du formulaire
     // Définition des champs du formulaire
     let lastName = document.getElementById('lastname');
     let firstName = document.getElementById('firstname');
@@ -180,82 +185,97 @@
       };
     }
 
-
-let formValidButton = document.querySelector('.form-validation');
-formValidButton.addEventListener('click', function formValidation() {
-  let resLastName = validInputForm(lastName, nameRegEx);
-  let resFirstName = validInputForm(firstName, nameRegEx);
-  let resAddress = validInputForm(address, addressRegEx);
-  let resZip = validInputForm(zip, zipRegEx);
-  let resCity = validInputForm(city, cityRegEx);
-  let resMail = validInputForm(mail, mailRegEx);
-  let resPhone = validInputForm(phone, phoneRegEX);
-  let resTermsOfUse = termsOfUse.checked;
-
-  if (!resTermsOfUse) {
-    checkTermsOfUse.removeAttribute('hidden');
-  } else {
-    checkTermsOfUse.setAttribute('hidden', 'hidden');
-  };
-  
-  if (resLastName && resFirstName && resAddress && resZip && resCity && resMail && resPhone && resTermsOfUse) {
-    let contact = {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      address: address.value,
-      city: city.value,
-      email: mail.value,
-    };
-
-    let contactMore = {
-      zip: zip.value,
-      phone: phone.value,
-      total: formatPrice(priceToPay * 100),
-    };
-
-    console.log('contact', contact, 'contact+', contactMore);
-
-    let products = [];
-    shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
-    shoppingCart.forEach(product => {
-      products.push(product.id);
-    });
-    console.log(products);
-
-    let confirmedOrder = {
-      contact,
-      products,
-    };
-
-    const getOrder = async function () {
-      try {
-        let resCart = await fetch("http://localhost:3000/api/teddies/order", {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: "POST",
-        body: JSON.stringify(confirmedOrder),
-    });
+    // Vérification au clic du bouton "Valider votre commande"
+    let formValidButton = document.querySelector('.form-validation');
+    formValidButton.addEventListener('click', function formValidation() {
+      let resLastName = validInputForm(lastName, nameRegEx);
+      let resFirstName = validInputForm(firstName, nameRegEx);
+      let resAddress = validInputForm(address, addressRegEx);
+      let resZip = validInputForm(zip, zipRegEx);
+      let resCity = validInputForm(city, cityRegEx);
+      let resMail = validInputForm(mail, mailRegEx);
+      let resPhone = validInputForm(phone, phoneRegEX);
+      let resTermsOfUse = termsOfUse.checked;
     
-    if(resCart.ok) {
-      let order = await resCart.json();
-      console.log(order);
-      localStorage.setItem('order', JSON.stringify(order));
-      localStorage.setItem('additionalInfo', JSON.stringify(contactMore));
-      localStorage.removeItem('shoppingCart');
-      window.location.href = 'commande.html';
-
+    // Vérification de l'acceptation des CGU
+    if (!resTermsOfUse) {
+      checkTermsOfUse.removeAttribute('hidden');
     } else {
-      console.error(
-        "Une erreur " + resCart.status + " a été retournée par le serveur."
-      );
-    }
-      } catch (e) {
-        console.log("Message d'erreur : ", e);
-      }
+      checkTermsOfUse.setAttribute('hidden', 'hidden');
     };
+    
+    // Vérification des champs formulaires
+    if (resLastName && resFirstName && resAddress && resZip && resCity && resMail && resPhone && resTermsOfUse) {
+      // Création du contact
+      let contact = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        address: address.value,
+        city: city.value,
+        email: mail.value,
+      };
+
+      // Création des informations contact non obligatoires
+      let contactMore = {
+        zip: zip.value,
+        phone: phone.value,
+        total: formatPrice(priceToPay * 100),
+      };
+
+      // Création produits
+      let products = [];
+      shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+      shoppingCart.forEach(product => {
+        products.push(product.id);
+      });
+
+      // Création du corps de la demande
+      let confirmedOrder = {
+        contact,
+        products,
+      };
+
+      // Fonction d'envoi du corps de la demande et retour serveur
+      const getOrder = async function() {
+        try {
+          let resCart = await fetch("http://localhost:3000/api/teddies/order", {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          method: "POST",
+          body: JSON.stringify(confirmedOrder),
+      });
+      
+      // Réponse positive
+        if(resCart.ok) {
+          // Création localStorage de la commande, des informations additionnelles et suppression du panier
+          let order = await resCart.json();
+          localStorage.setItem('order', JSON.stringify(order));
+          localStorage.setItem('additionalInfo', JSON.stringify(contactMore));
+          localStorage.removeItem('shoppingCart');
+
+          // Bouton validation de commande
+          formValidButton.classList.remove('btn-primary');
+          formValidButton.classList.add('btn-success');
+          formValidButton.innerHTML = '<span class="spinner-grow spinner-grow-sm mr-2" role="status" aria-hidden="true"></span> Validation de votre commande';
+          
+          // Délai d'attente avant chargement de la page commande
+          setTimeout(function orderConfirmation() {
+            window.location.href = 'commande.html';
+          }, 3500);
+
+      } else {
+      // Réponse négative
+        console.error(
+          "Une erreur " + resCart.status + " a été retournée par le serveur."
+        );
+      }
+        } catch (e) {
+          console.log("Message d'erreur : ", e);
+        }
+      };
     getOrder();
   };
 });   
 
-cartTotalItems ();
+cartTotalItems();
