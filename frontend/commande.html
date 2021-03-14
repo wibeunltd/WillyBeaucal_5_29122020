@@ -57,46 +57,58 @@
   </div>
   <!-- Contenu -->
   <main class="container">
-    <section class="jumbotron bg-white mb-0 pl-0 pr-0">
-      <h1 class="display-4 font-weight-bold">
-        Confirmation de commande
-      </h1>
-      <div class="row g-0 position-relative">
-          <div class="col-lg-5 mb-md-0 p-md-4">
-            <p class="lead client-firstname"></p>
-            <p class="lead">Votre commande <span class="text-info order-id"></span> d'un montant de <span class="text-info total-order"></span> effectuée le <span class="date-locale"></span> est en préparation.</p>
-            <p class="lead">Vous serez informé via votre adresse mail <span class="text-info client-mail"></span> et par sms au <span class="text-info client-phone"></span> dès que votre commande quittera nos locaux.</p>
-            <p class="lead"> Vous recevrez dans les minutes qui suivent, un mail contenant le détail de votre commande, ainsi qu'une facture.</p>
-            <p class="lead"> Vous pouvez aussi suivre votre commande en vous connectant à votre espace personnel.</p>
+    <div class="invalid-ordered">
+      <section class="jumbotron content-invalid-ordered bg-white mb-0 pl-0 pr-0"></section>
+    </div>
+    <div class="valid-ordered">
+      <section class="jumbotron bg-white mb-0 pl-0 pr-0">
+        <h1 class="display-4 font-weight-bold">
+          Confirmation de commande
+        </h1>
+        <div class="row g-0 position-relative">
+            <div class="col-lg-5 mb-md-0 p-md-4">
+              <p class="lead client-firstname"></p>
+              <p class="lead">Votre commande <span class="text-info order-id"></span> d'un montant de <span class="text-info total-order"></span> effectuée le <span class="date-locale"></span> est en préparation.</p>
+              <p class="lead">Vous serez informé via votre adresse mail <span class="text-info client-mail"></span> et par sms au <span class="text-info client-phone"></span> dès que votre commande quittera nos locaux.</p>
+              <p class="lead"> Vous recevrez dans les minutes qui suivent, un mail contenant le détail de votre commande, ainsi qu'une facture.</p>
+              <p class="lead"> Vous pouvez aussi suivre votre commande en vous connectant à votre espace personnel.</p>
+            </div>
+            <div class="col-md-7 p-4 ps-md-0">
+              <img src="img/delivery.gif" class="img-fluid" alt="">
+            </div>
+        </div>
+      </section>
+      <!-- Informations client -->
+      <div class="card shadow-sm rounded p-2 mb-3">
+        <div class="card-header bg-white">
+          <h2><i class="far fa-address-card mr-2"></i>Vos informations</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+              <div class="col-lg-6 mb-md-0 p-md-4">
+                  <h3>Adresse de livraison</h3>
+                  <address class="mb-1 client-address"></address>
+                  <address class="client-city"></address>
+              </div>
+              <div class="col-md-6 p-4 ps-md-0">
+                  <h3>Information de contact</h3>
+                  <p class="mb-1 client-name"></p>
+                  <p class="d-inline mr-4 client-phone"><i class="fas fa-mobile mr-2"></i></p>
+                  <p class="d-inline client-mail"><i class="fas fa-envelope-open-text mr-2"></i></p>
+              </div>
           </div>
-          <div class="col-md-7 p-4 ps-md-0">
-            <img src="img/delivery.gif" class="img-fluid" alt="">
-          </div>
+        </div>
+        <div class="card-footer bg-white">
+          <p class="font-weight-bold mb-0">Afin de vous remercier, nous vous offrons 25% de réduction sur votre prochaine commande avec le code LOVE25*</p>
+          <p class="small mb-0">* pour toute commande d'un montant minimum de 169 €. Offre non cumulable avec toute autre offre promotionnelle.</p>
+        </div>
       </div>
-    </section>
-    <!-- Informations client -->
-    <h2><u>Vos informations</u></h2>
-    <div class="row">
-        <div class="col-lg-6 mb-md-0 p-md-4">
-            <h3>Adresse de livraison</h3>
-            <address class="mb-1 client-address"></address>
-            <address class="client-city"></address>
-        </div>
-        <div class="col-md-6 p-4 ps-md-0">
-            <h3>Information de contact</h3>
-            <p class="mb-1 client-name"></p>
-            <p class="d-inline mr-4 client-phone"><i class="fas fa-mobile mr-2"></i></p>
-            <p class="d-inline client-mail"><i class="fas fa-envelope-open-text mr-2"></i></p>
-        </div>
-    </div>
-    <!--Réduction-->
-    <div class="card bg-dark p-1 mb-4">
-      <p class="font-weight-bold text-center text-white mb-0"><i class="far fa-grin-hearts mr-2"></i>Parce que l'amour n'a pas de prix, 25% de réduction sur votre prochaine commande avec le code LOVE25*</p>
-    </div>
-    <div class="d-flex justify-content-between">
-      <img src="/frontend/img/collection/with-love.jpg" alt="Oursons en duo sur le sable" class="img-thumbnail w-25">
-      <img src="/frontend/img/collection/with-love-01.jpg" alt="Oursons en duo amoureux" class="img-thumbnail w-25">
-      <img src="/frontend/img/collection/with-love-02.jpg" alt="Oursons en duo dans un pré" class="img-thumbnail w-25">
+      <!-- Duo -->
+      <div class="d-flex justify-content-between">
+        <img src="/frontend/img/collection/with-love-01.jpg" alt="Oursons en duo amoureux" class="img-thumbnail w-25">
+        <img src="/frontend/img/collection/with-love.jpg" alt="Oursons en duo sur le sable" class="img-thumbnail w-25">
+        <img src="/frontend/img/collection/with-love-02.jpg" alt="Oursons en duo dans un pré" class="img-thumbnail w-25">
+      </div>
     </div>
   </main>
   <!-- Footer -->
