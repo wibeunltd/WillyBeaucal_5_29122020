@@ -2,7 +2,7 @@
 Orinoco
 
 ## Prérequis
-Vous devez avoir Node et npm installés sur votre machine.
+Vous devez avoir `Node et npm` installés sur votre machine.
 
 ## Lancement
 Ouvrez un terminal et positionnez vous sur le dossier backend à partir du dossier du projet
@@ -13,4 +13,4 @@ Vous pouvez maintenant lancer le projet en local pour l'utiliser
 ```
 > node server
 ```
-Le serveur doit fonctionner sur `localhost` avec le port par défaut` 3000`. Il se peut que le serveur fonctionne sur un autre port, mais celui-ci sera indiqué dans votre terminal, par ex : `Écoute sur le port 3001`.
+Le serveur doit fonctionner sur `localhost` avec le port par défaut `3000`. Il se peut que le serveur fonctionne sur un autre port, mais celui-ci sera indiqué dans votre terminal, par ex : `Écoute sur le port 3001`.
