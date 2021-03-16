@@ -43,7 +43,7 @@ const getProducts = async function() {
       availableSoon.classList.add('col-12', 'col-lg-4');
       availableSoon.innerHTML =
       `<div class="card mb-4 mb-lg-4 border-light shadow">
-      <img src="/backend/images/teddy_0.jpg" alt="Ours en peluche bientôt disponible" />
+      <img src="../backend/images/teddy_0.jpg" alt="Ours en peluche bientôt disponible" />
       <div class="card-img-overlay text-right">
       <p class="card-text btn btn-warning">Bientôt disponible</p>
       </div>
